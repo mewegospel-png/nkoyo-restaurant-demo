@@ -3,152 +3,2082 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Nkoyo — Contemporary Nigerian dining in the heart of Abuja.">
-  <title>Nkoyo | Abuja Dining</title>
+  <meta name="description" content="Nkoyo Abuja — Continental dining in the heart of Abuja.">
+  <title>Nkoyo Abuja | Restaurant</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --dark: #11110f;
+      --dark-2: #1b1a17;
+      --cream: #f6f0e5;
+      --cream-2: #ebe1d0;
+      --gold: #c99a4a;
+      --gold-light: #e1bd78;
+      --text: #28251f;
+      --muted: #756f64;
+      --white: #ffffff;
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 20px 60px rgba(0,0,0,.15);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(17,17,15,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 17px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      color: var(--white);
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .logo span {
+      color: var(--gold-light);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #eee9df;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      border: 1px solid rgba(255,255,255,.25);
+      background: transparent;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+
+    .nav-btn:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    .cart-button {
+      position: relative;
+      border: 0;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .cart-button:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .cart-count {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 22px;
+      height: 22px;
+      margin-left: 6px;
+      padding: 0 5px;
+      border-radius: 50px;
+      background: var(--dark);
+      color: white;
+      font-size: 12px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 92vh;
+      padding: 150px 24px 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(10,10,9,.94) 0%, rgba(10,10,9,.75) 45%, rgba(10,10,9,.35) 100%),
+        radial-gradient(circle at 75% 35%, rgba(201,154,74,.25), transparent 35%),
+        linear-gradient(135deg, #25231e, #0d0d0b);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, transparent 0 55%, rgba(201,154,74,.08) 55% 56%, transparent 56%),
+        linear-gradient(65deg, transparent 0 72%, rgba(255,255,255,.04) 72% 73%, transparent 73%);
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      color: white;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(50px, 8vw, 88px);
+      line-height: .98;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero p {
+      max-width: 610px;
+      color: #ddd7cc;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
+
+    .primary-btn {
+      background: var(--gold);
+      color: var(--dark);
+      border: 1px solid var(--gold);
+    }
+
+    .primary-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .secondary-btn {
+      color: white;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.05);
+    }
+
+    .secondary-btn:hover {
+      background: white;
+      color: var(--dark);
+    }
+
+    .hero-info {
+      margin-top: 55px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      color: #cfc8bc;
+      font-size: 14px;
+    }
+
+    .hero-info div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 90px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-heading {
+      max-width: 680px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.05;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-card {
+      min-height: 500px;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(201,154,74,.25), rgba(255,255,255,.03)),
+        #25231f;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-card::before {
+      content: "NKOYO";
+      position: absolute;
+      left: -30px;
+      bottom: 25px;
+      font-family: "Playfair Display", serif;
+      font-size: 110px;
+      font-weight: 700;
+      color: rgba(255,255,255,.045);
+      transform: rotate(-90deg);
+      transform-origin: left bottom;
+    }
+
+    .about-card::after {
+      content: "";
+      position: absolute;
+      inset: 35px;
+      border: 1px solid rgba(225,189,120,.35);
+      border-radius: 18px;
+    }
+
+    .about-art {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Playfair Display", serif;
+      color: rgba(225,189,120,.75);
+      font-size: 80px;
+      letter-spacing: 10px;
+    }
+
+    .about-text h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 38px;
+      margin-bottom: 18px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 28px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid #e6ddce;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    .menu-section {
+      background: #fffdf8;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 28px;
+      scrollbar-width: none;
+    }
+
+    .category-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-btn {
+      white-space: nowrap;
+      border: 1px solid #ded4c4;
+      background: white;
+      color: var(--text);
+      padding: 10px 17px;
+      border-radius: 999px;
+      transition: .2s ease;
+    }
+
+    .category-btn.active,
+    .category-btn:hover {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .menu-card {
+      background: white;
+      border: 1px solid #e9e0d2;
+      border-radius: var(--radius);
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      min-height: 235px;
+      transition: .25s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.08);
+    }
+
+    .menu-tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 5px 9px;
+      border-radius: 50px;
+      background: #f3e7d0;
+      color: #775522;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      margin-bottom: 14px;
+    }
+
+    .menu-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .menu-card p {
+      color: var(--muted);
+      font-size: 13px;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .menu-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .price.nil {
+      color: var(--gold);
+    }
+
+    .add-btn {
+      border: 0;
+      background: var(--dark);
+      color: white;
+      padding: 9px 14px;
+      border-radius: 9px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .add-btn:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* =========================
+       DRINKS
+    ========================= */
+
+    .drinks-section {
+      background: var(--dark);
+      color: white;
+    }
+
+    .drinks-section .section-heading h2 {
+      color: white;
+    }
+
+    .drinks-section .section-heading p {
+      color: #aaa49a;
+    }
+
+    .drinks-section .eyebrow {
+      color: var(--gold-light);
+    }
+
+    .drinks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .drink-card {
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .drink-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 21px;
+    }
+
+    .drink-card p {
+      color: #9d988f;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .drink-price {
+      color: var(--gold-light);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       LOCATION
+    ========================= */
+
+    .contact-section {
+      background: var(--cream);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 30px;
+    }
+
+    .contact-card {
+      background: white;
+      border: 1px solid #e7ddcd;
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .contact-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid #eee6da;
+    }
+
+    .contact-item:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #f2e7d5;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .contact-item span,
+    .contact-item a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-item a:hover {
+      color: var(--gold);
+    }
+
+    .hours {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid #eee6da;
+    }
+
+    .hours:last-child {
+      border-bottom: 0;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #0d0d0b;
+      color: white;
+      padding: 45px 24px 30px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .footer-brand {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+    }
+
+    .footer-brand span {
+      color: var(--gold-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      color: #aaa49a;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      max-width: 1200px;
+      margin: 30px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #716d66;
+      font-size: 12px;
+    }
+
+    /* =========================
+       CART DRAWER
+    ========================= */
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 1500;
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s ease;
+    }
+
+    .overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(460px, 100%);
+      height: 100vh;
+      background: #fffdf8;
+      z-index: 1600;
+      transform: translateX(100%);
+      transition: .3s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -15px 0 50px rgba(0,0,0,.2);
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      padding: 22px;
+      border-bottom: 1px solid #e9e0d2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-header h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+    }
+
+    .close-cart {
+      width: 38px;
+      height: 38px;
+      border: 1px solid #ded4c4;
+      border-radius: 50%;
+      background: white;
+      font-size: 20px;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 22px;
+    }
+
+    .empty-cart {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 30px;
+    }
+
+    .empty-cart strong {
+      display: block;
+      color: var(--dark);
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      margin-bottom: 6px;
+    }
+
+    .cart-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #e9e0d2;
+    }
+
+    .cart-item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .cart-item h4 {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+    }
+
+    .cart-item-price {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .cart-item-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .quantity-controls {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #dcd2c2;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .quantity-controls button {
+      width: 32px;
+      height: 30px;
+      border: 0;
+      background: white;
+    }
+
+    .quantity-controls button:hover {
+      background: #f0e7d8;
+    }
+
+    .quantity-controls span {
+      width: 34px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .remove-btn {
+      border: 0;
+      background: transparent;
+      color: #a14c40;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .cart-footer {
+      padding: 20px 22px;
+      border-top: 1px solid #e9e0d2;
+      background: white;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .cart-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      border: 0;
+      background: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 11px;
+      font-weight: 800;
+      font-size: 15px;
+      transition: .2s ease;
+    }
+
+    .checkout-btn:hover {
+      filter: brightness(.94);
+      transform: translateY(-1px);
+    }
+
+    .checkout-btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 120px);
+      background: var(--dark);
+      color: white;
+      padding: 13px 18px;
+      border-radius: 999px;
+      z-index: 3000;
+      opacity: 0;
+      transition: .3s ease;
+      font-size: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid,
+      .drinks-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-card {
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        padding: 14px 16px;
+      }
+
+      .logo {
+        font-size: 25px;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      .cart-button {
+        padding: 9px 12px;
+      }
+
+      .hero {
+        min-height: 88vh;
+        padding: 135px 20px 65px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 65px 20px;
+      }
+
+      .about-grid {
+        gap: 35px;
+      }
+
+      .about-card {
+        min-height: 320px;
+      }
+
+      .about-card::before {
+        font-size: 70px;
+      }
+
+      .about-art {
+        font-size: 52px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid,
+      .drinks-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-card {
+        min-height: 205px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+
+      .hero-info {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="nav">
-    <a class="brand" href="#top" aria-label="Nkoyo home">NKOYO<span>.</span></a>
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
-    <nav class="nav-links">
-      <a href="#story">Our Story</a>
-      <a href="#menu">Menu</a>
-      <a href="#experience">Experience</a>
-      <a href="#visit">Visit</a>
-      <a class="nav-cta" href="#reservation">Reserve a Table</a>
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header>
+    <nav class="nav">
+      <a href="#home" class="logo">Nkoyo<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <a
+          class="nav-btn"
+          href="https://wa.me/2348188880126?text=Hello%20Nkoyo%20Abuja%2C%20I%20would%20like%20to%20place%20an%20order%20of%20"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp
+        </a>
+
+        <button class="cart-button" onclick="openCart()">
+          Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-overlay"></div>
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
+
+    <section class="hero" id="home">
       <div class="hero-content">
-        <p class="eyebrow">CONTEMPORARY NIGERIAN DINING · ABUJA</p>
-        <h1>Where Abuja<br><em>comes to dine.</em></h1>
-        <p class="hero-copy">Bold flavours, warm hospitality and an atmosphere designed for memorable evenings.</p>
-        <div class="hero-actions">
-          <a class="button button-light" href="#menu">Explore the Menu</a>
-          <a class="text-link" href="#reservation">Make a Reservation <span>→</span></a>
+
+        <div class="eyebrow">Continental Dining · Abuja</div>
+
+        <h1>
+          Good food.<br>
+          <span>Beautiful moments.</span>
+        </h1>
+
+        <p>
+          Welcome to Nkoyo Abuja — a sophisticated dining experience
+          blending delicious food, warm hospitality and contemporary
+          African character in the heart of Abuja.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#menu" class="primary-btn">Explore Our Menu</a>
+
+          <a
+            href="https://wa.me/2348188880126?text=Hello%20Nkoyo%20Abuja%2C%20I%20would%20like%20to%20place%20an%20order%20of%20"
+            target="_blank"
+            rel="noopener"
+            class="secondary-btn"
+          >
+            Order on WhatsApp
+          </a>
         </div>
+
+        <div class="hero-info">
+          <div>📍 Central Area, Abuja</div>
+          <div>🕐 10:30 AM – 10:00 PM</div>
+          <div>✨ Smart Casual</div>
+        </div>
+
       </div>
-      <div class="hero-note">264 Tafawa Balewa Rd · Central Area, Abuja</div>
     </section>
 
-    <section class="intro section" id="story">
-      <div class="section-label">01 / THE NKOYO EXPERIENCE</div>
-      <div class="intro-grid">
-        <div>
-          <h2>A taste of <em>home.</em><br>A feeling of <em>occasion.</em></h2>
-        </div>
-        <div class="intro-copy">
-          <p>Nkoyo brings together the richness of African flavours with a refined, contemporary dining experience in the heart of Abuja.</p>
-          <p>Come for lunch, stay for dinner. Gather around the table, discover something new, and let the evening unfold.</p>
-          <a class="underline-link" href="#experience">Discover Nkoyo <span>↗</span></a>
-        </div>
-      </div>
-    </section>
 
-    <section class="feature-image">
-      <div class="feature-card">
-        <p class="eyebrow">THE SPACE</p>
-        <h2>Designed to make<br>you <em>stay.</em></h2>
-        <p>Traditional African art meets modern Abuja. An open kitchen, intimate dining spaces and an outdoor section beneath a vibrant skylight.</p>
-      </div>
-    </section>
+    <!-- =========================
+         ABOUT
+    ========================= -->
 
-    <section class="menu section" id="menu">
-      <div class="section-label">02 / MENU HIGHLIGHTS</div>
-      <div class="menu-head">
-        <h2>Good food.<br><em>No shortcuts.</em></h2>
-        <p>From familiar favourites to dishes made for discovery, every plate is built around generous flavour and quality ingredients.</p>
-      </div>
+    <section class="about" id="about">
+      <div class="container">
 
-      <div class="menu-grid">
-        <article class="menu-item">
-          <div class="menu-number">01</div>
-          <div>
-            <h3>Dynamite Shrimps</h3>
-            <p>Crispy, succulent prawns with a bold signature finish.</p>
+        <div class="about-grid">
+
+          <div class="about-card">
+            <div class="about-art">NKOYO</div>
           </div>
-          <span class="menu-tag">POPULAR</span>
-        </article>
-        <article class="menu-item">
-          <div class="menu-number">02</div>
-          <div>
-            <h3>Any Soup · Protein · Swallow</h3>
-            <p>A classic Nigerian combination, made your way.</p>
+
+          <div class="about-text">
+
+            <div class="eyebrow">The Nkoyo Experience</div>
+
+            <h3>A place to eat, gather and enjoy.</h3>
+
+            <p>
+              Nkoyo brings together great food and an inviting atmosphere
+              designed for everyday meals, celebrations, business lunches,
+              evenings out and memorable moments with friends and family.
+            </p>
+
+            <p>
+              Located at 264 Tafawa Balewa Road in Abuja's Central Area,
+              our space combines sophisticated interiors, traditional
+              African art and an open-kitchen atmosphere.
+            </p>
+
+            <div class="features">
+
+              <div class="feature">
+                <strong>🍽️ Great Food</strong>
+                <span>Continental dining with Nigerian favourites.</span>
+              </div>
+
+              <div class="feature">
+                <strong>🌿 Outdoor Seating</strong>
+                <span>Relax in our vibrant outdoor space.</span>
+              </div>
+
+              <div class="feature">
+                <strong>🥂 Private Dining</strong>
+                <span>Perfect for groups and special occasions.</span>
+              </div>
+
+              <div class="feature">
+                <strong>✨ Smart Casual</strong>
+                <span>Come comfortable and ready to enjoy.</span>
+              </div>
+
+            </div>
+
           </div>
-          <span class="menu-tag">FAVOURITE</span>
-        </article>
-        <article class="menu-item">
-          <div class="menu-number">03</div>
-          <div>
-            <h3>Continental Selection</h3>
-            <p>Contemporary plates for every kind of appetite.</p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         MENU
+    ========================= -->
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Our Menu</div>
+          <h2>Something for every appetite.</h2>
+          <p>
+            Choose your favourites, add them to your cart and send your
+            order directly to Nkoyo on WhatsApp.
+          </p>
+        </div>
+
+        <div class="category-tabs">
+          <button class="category-btn active" onclick="filterMenu('all', this)">
+            All
+          </button>
+
+          <button class="category-btn" onclick="filterMenu('popular', this)">
+            Popular
+          </button>
+
+          <button class="category-btn" onclick="filterMenu('soups', this)">
+            Soups & Swallow
+          </button>
+
+          <button class="category-btn" onclick="filterMenu('mains', this)">
+            Mains
+          </button>
+
+          <button class="category-btn" onclick="filterMenu('sides', this)">
+            Sides
+          </button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid"></div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         DRINKS
+    ========================= -->
+
+    <section class="drinks-section" id="drinks">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Nigerian Drinks</div>
+          <h2>Refreshments with local character.</h2>
+          <p>
+            Our drinks are available to add to your WhatsApp order.
+            Prices will be confirmed by Nkoyo for now.
+          </p>
+        </div>
+
+        <div class="drinks-grid" id="drinksGrid"></div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">Visit Nkoyo</div>
+          <h2>Come hungry. Leave happy.</h2>
+          <p>
+            Reservations are recommended during peak periods and for larger
+            groups. Walk-ins are welcome.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-card">
+
+            <h3>Find Us</h3>
+
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <strong>Address</strong>
+                <span>
+                  264 Tafawa Balewa Rd, Central Area,
+                  Abuja 900211, Federal Capital Territory
+                </span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:09049396826">09049396826</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">💬</div>
+              <div>
+                <strong>WhatsApp</strong>
+                <a
+                  href="https://wa.me/2348188880126"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  08188880126
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">📸</div>
+              <div>
+                <strong>Instagram</strong>
+                <a
+                  href="https://instagram.com/nkoyo.abuja"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  @nkoyo.abuja
+                </a>
+              </div>
+            </div>
+
           </div>
-        </article>
-      </div>
 
-      <div class="center"><a class="button button-dark" href="#reservation">View Full Menu</a></div>
-    </section>
 
-    <section class="experience section" id="experience">
-      <div class="section-label">03 / MORE THAN A MEAL</div>
-      <div class="experience-grid">
-        <div class="experience-copy">
-          <h2>Bring your people.<br><em>We'll set the table.</em></h2>
-          <p>Planning a celebration, business dinner or simply a night out? Nkoyo offers private dining and spaces designed for groups, while walk-ins remain welcome.</p>
-          <ul>
-            <li>Private dining room</li>
-            <li>Outdoor seating</li>
-            <li>Group gatherings</li>
-            <li>Happy-hour food</li>
-          </ul>
-        </div>
-        <div class="quote-card">
-          <span class="quote-mark">“</span>
-          <p>Come hungry. Leave with a story.</p>
-          <small>NKOYO · ABUJA</small>
-        </div>
-      </div>
-    </section>
+          <div class="contact-card">
 
-    <section class="reservation" id="reservation">
-      <div class="reservation-inner">
-        <p class="eyebrow">YOUR TABLE IS WAITING</p>
-        <h2>Make tonight<br><em>worth remembering.</em></h2>
-        <p>For peak dining times and group gatherings, reservations are recommended.</p>
-        <div class="contact-actions"><a class="button button-light" href="tel:+2349049396826">Call to Reserve</a><a class="button button-outline-light" href="https://wa.me/2348188880126" target="_blank" rel="noopener">WhatsApp Us</a></div>
-      </div>
-    </section>
+            <h3>Opening Hours</h3>
 
-    <section class="visit section" id="visit">
-      <div class="section-label">04 / FIND US</div>
-      <div class="visit-grid">
-        <div>
-          <h2>Come <em>through.</em></h2>
-          <p>264 Tafawa Balewa Rd<br>Central Area, Abuja<br>Federal Capital Territory</p>
-          <a class="underline-link" href="https://www.google.com/maps/search/?api=1&query=Nkoyo%2C%20264%20Tafawa%20Balewa%20Rd%2C%20Abuja" target="_blank" rel="noopener">Get Directions <span>↗</span></a>
+            <div class="hours">
+              <span>Monday</span>
+              <strong>10:30 AM – 10:00 PM</strong>
+            </div>
+
+            <div class="hours">
+              <span>Tuesday</span>
+              <strong>10:30 AM – 10:00 PM</strong>
+            </div>
+
+            <div class="hours">
+              <span>Wednesday</span>
+              <strong>10:30 AM – 10:00 PM</strong>
+            </div>
+
+            <div class="hours">
+              <span>Thursday</span>
+              <strong>10:30 AM – 10:00 PM</strong>
+            </div>
+
+            <div class="hours">
+              <span>Friday</span>
+              <strong>10:30 AM – 10:00 PM</strong>
+            </div>
+
+            <div class="hours">
+              <span>Saturday</span>
+              <strong>10:30 AM – 10:00 PM</strong>
+            </div>
+
+            <div class="hours">
+              <span>Sunday</span>
+              <strong>10:30 AM – 10:00 PM</strong>
+            </div>
+
+          </div>
+
         </div>
-        <div class="hours">
-          <div><span>MON — SUN</span><strong>10:30 AM — 10:00 PM</strong></div>
-          <div><span>PRICE RANGE</span><strong>₦10,000 — ₦30,000</strong></div>
-          <div><span>CALL</span><strong>0904 939 6826</strong></div><div><span>WHATSAPP</span><strong>0818 888 0126</strong></div><div><span>INSTAGRAM</span><strong><a href="https://instagram.com/nkoyo.abuja" target="_blank" rel="noopener">@nkoyo.abuja</a></strong></div><div><span>RATING</span><strong>4.3 ★ · 2,247 reviews</strong></div>
-        </div>
+
       </div>
     </section>
+
   </main>
 
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
   <footer>
-    <div class="footer-brand">NKOYO<span>.</span></div>
-    <p>Contemporary Nigerian dining · Abuja · <a href="https://instagram.com/nkoyo.abuja" target="_blank" rel="noopener">@nkoyo.abuja</a></p>
-    <div class="footer-bottom"><span>© 2026 Nkoyo Concept Demo</span><a href="#top">Back to top ↑</a></div>
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        Nkoyo<span>.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact</a>
+
+        <a
+          href="https://instagram.com/nkoyo.abuja"
+          target="_blank"
+          rel="noopener"
+        >
+          Instagram
+        </a>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © <span id="year"></span> Nkoyo Abuja. All rights reserved.
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+
+  <!-- =========================
+       CART OVERLAY
+  ========================= -->
+
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+  <aside class="cart-drawer" id="cartDrawer">
+
+    <div class="cart-header">
+      <h2>Your Order</h2>
+      <button class="close-cart" onclick="closeCart()">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cartTotal">NIL</span>
+      </div>
+
+      <div class="cart-note">
+        Prices currently marked NIL will be confirmed by Nkoyo on WhatsApp.
+      </div>
+
+      <button
+        class="checkout-btn"
+        id="checkoutBtn"
+        onclick="checkoutWhatsApp()"
+        disabled
+      >
+        Order on WhatsApp
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =========================
+       TOAST
+  ========================= -->
+
+  <div class="toast" id="toast"></div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
+  <script>
+
+    /*
+      =========================================
+      EASY EDIT AREA
+      =========================================
+
+      You can change menu names, descriptions,
+      categories and prices here later.
+
+      Use price: 0 for NIL.
+      Example:
+      price: 8500
+    */
+
+    const menuItems = [
+
+      {
+        id: 1,
+        name: "Dynamite Shrimps",
+        description: "Crispy, flavourful shrimp with a delicious signature sauce.",
+        category: "popular",
+        price: 0,
+        tag: "Popular"
+      },
+
+      {
+        id: 2,
+        name: "Any Soup · Protein · Swallow",
+        description: "Choose your favourite Nigerian soup, protein and swallow combination.",
+        category: "soups",
+        price: 0,
+        tag: "Popular"
+      },
+
+      {
+        id: 3,
+        name: "Nigerian Jollof Rice",
+        description: "Classic Nigerian-style jollof rice, rich and full of flavour.",
+        category: "mains",
+        price: 0,
+        tag: "Favourite"
+      },
+
+      {
+        id: 4,
+        name: "Fried Rice",
+        description: "Fragrant fried rice prepared with delicious vegetables and seasoning.",
+        category: "mains",
+        price: 0,
+        tag: "Classic"
+      },
+
+      {
+        id: 5,
+        name: "Pepper Soup",
+        description: "A warming Nigerian favourite with aromatic spices and rich flavour.",
+        category: "soups",
+        price: 0,
+        tag: "Nigerian"
+      },
+
+      {
+        id: 6,
+        name: "Suya",
+        description: "Spiced grilled meat with the smoky flavour Nigerians love.",
+        category: "mains",
+        price: 0,
+        tag: "Nigerian"
+      },
+
+      {
+        id: 7,
+        name: "Grilled Chicken",
+        description: "Tender grilled chicken seasoned for a rich, smoky finish.",
+        category: "mains",
+        price: 0,
+        tag: "Favourite"
+      },
+
+      {
+        id: 8,
+        name: "Fried Plantain",
+        description: "Golden sweet plantain, crisp around the edges and soft inside.",
+        category: "sides",
+        price: 0,
+        tag: "Side"
+      },
+
+      {
+        id: 9,
+        name: "Yam / Potato Chips",
+        description: "Crispy chips served as the perfect accompaniment.",
+        category: "sides",
+        price: 0,
+        tag: "Side"
+      },
+
+      {
+        id: 10,
+        name: "Grilled Prawns",
+        description: "Succulent prawns grilled with aromatic seasoning.",
+        category: "mains",
+        price: 0,
+        tag: "Seafood"
+      }
+
+    ];
+
+
+    const drinks = [
+
+      {
+        id: 101,
+        name: "Zobo",
+        description: "Refreshing hibiscus drink.",
+        price: 0
+      },
+
+      {
+        id: 102,
+        name: "Chapman",
+        description: "Classic Nigerian-style fruity cocktail.",
+        price: 0
+      },
+
+      {
+        id: 103,
+        name: "Kunu Aya",
+        description: "Creamy tiger-nut drink.",
+        price: 0
+      },
+
+      {
+        id: 104,
+        name: "Fresh Ginger Drink",
+        description: "Refreshing ginger-infused drink.",
+        price: 0
+      },
+
+      {
+        id: 105,
+        name: "Palm Wine",
+        description: "Traditional Nigerian favourite.",
+        price: 0
+      },
+
+      {
+        id: 106,
+        name: "Nigerian Malt",
+        description: "Chilled malt beverage.",
+        price: 0
+      }
+
+    ];
+
+
+    /*
+      =========================================
+      CART
+      =========================================
+    */
+
+    let cart = [];
+
+
+    /*
+      =========================================
+      FORMAT PRICE
+      =========================================
+    */
+
+    function formatPrice(price) {
+
+      if (!price || price === 0) {
+        return "NIL";
+      }
+
+      return "₦" + price.toLocaleString("en-NG");
+
+    }
+
+
+    /*
+      =========================================
+      RENDER MENU
+      =========================================
+    */
+
+    function renderMenu(category = "all") {
+
+      const grid = document.getElementById("menuGrid");
+
+      const filtered = category === "all"
+        ? menuItems
+        : menuItems.filter(item => item.category === category);
+
+      grid.innerHTML = filtered.map(item => `
+
+        <article class="menu-card">
+
+          <div class="menu-tag">${item.tag}</div>
+
+          <h3>${item.name}</h3>
+
+          <p>${item.description}</p>
+
+          <div class="menu-bottom">
+
+            <div class="price ${item.price === 0 ? "nil" : ""}">
+              ${formatPrice(item.price)}
+            </div>
+
+            <button
+              class="add-btn"
+              onclick="addToCart(${item.id})"
+            >
+              + Add
+            </button>
+
+          </div>
+
+        </article>
+
+      `).join("");
+
+    }
+
+
+    /*
+      =========================================
+      RENDER DRINKS
+      =========================================
+    */
+
+    function renderDrinks() {
+
+      const grid = document.getElementById("drinksGrid");
+
+      grid.innerHTML = drinks.map(drink => `
+
+        <div class="drink-card">
+
+          <div>
+            <h3>${drink.name}</h3>
+            <p>${drink.description}</p>
+          </div>
+
+          <div class="drink-price">
+            ${formatPrice(drink.price)}
+          </div>
+
+        </div>
+
+      `).join("");
+
+    }
+
+
+    /*
+      =========================================
+      FILTER MENU
+      =========================================
+    */
+
+    function filterMenu(category, button) {
+
+      document.querySelectorAll(".category-btn").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      renderMenu(category);
+
+    }
+
+
+    /*
+      =========================================
+      ADD ITEM
+      =========================================
+    */
+
+    function addToCart(id) {
+
+      const item = menuItems.find(item => item.id === id);
+
+      if (!item) return;
+
+      const existing = cart.find(cartItem => cartItem.id === id);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({
+          ...item,
+          quantity: 1
+        });
+      }
+
+      updateCart();
+
+      showToast(`${item.name} added to your order`);
+
+    }
+
+
+    /*
+      =========================================
+      ADD DRINK
+      =========================================
+
+      Drinks are currently displayed as NIL.
+      This function is included so you can
+      easily add drink ordering later.
+    */
+
+    function addDrinkToCart(id) {
+
+      const drink = drinks.find(item => item.id === id);
+
+      if (!drink) return;
+
+      const existing = cart.find(cartItem => cartItem.id === id);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({
+          ...drink,
+          quantity: 1
+        });
+      }
+
+      updateCart();
+
+    }
+
+
+    /*
+      =========================================
+      CHANGE QUANTITY
+      =========================================
+    */
+
+    function changeQuantity(id, amount) {
+
+      const item = cart.find(item => item.id === id);
+
+      if (!item) return;
+
+      item.quantity += amount;
+
+      if (item.quantity <= 0) {
+        cart = cart.filter(item => item.id !== id);
+      }
+
+      updateCart();
+
+    }
+
+
+    /*
+      =========================================
+      REMOVE ITEM
+      =========================================
+    */
+
+    function removeFromCart(id) {
+
+      cart = cart.filter(item => item.id !== id);
+
+      updateCart();
+
+    }
+
+
+    /*
+      =========================================
+      UPDATE CART
+      =========================================
+    */
+
+    function updateCart() {
+
+      const cartCount = document.getElementById("cartCount");
+      const cartItems = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+
+      const totalQuantity = cart.reduce(
+        (sum, item) => sum + item.quantity,
+        0
+      );
+
+      cartCount.textContent = totalQuantity;
+
+      if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+
+          <div class="empty-cart">
+
+            <div>
+              <strong>Your cart is empty</strong>
+              Add something delicious from the menu.
+            </div>
+
+          </div>
+
+        `;
+
+        cartTotal.textContent = "NIL";
+        checkoutBtn.disabled = true;
+
+        return;
+
+      }
+
+
+      cartItems.innerHTML = cart.map(item => `
+
+        <div class="cart-item">
+
+          <div class="cart-item-top">
+
+            <h4>${item.name}</h4>
+
+            <div class="cart-item-price">
+              ${formatPrice(item.price)}
+            </div>
+
+          </div>
+
+          <div class="cart-item-bottom">
+
+            <div class="quantity-controls">
+
+              <button onclick="changeQuantity(${item.id}, -1)">
+                −
+              </button>
+
+              <span>${item.quantity}</span>
+
+              <button onclick="changeQuantity(${item.id}, 1)">
+                +
+              </button>
+
+            </div>
+
+            <button
+              class="remove-btn"
+              onclick="removeFromCart(${item.id})"
+            >
+              Remove
+            </button>
+
+          </div>
+
+        </div>
+
+      `).join("");
+
+
+      const total = cart.reduce(
+        (sum, item) => sum + (item.price * item.quantity),
+        0
+      );
+
+
+      const hasNilItems = cart.some(item => item.price === 0);
+
+
+      if (hasNilItems) {
+        cartTotal.textContent = total > 0
+          ? `₦${total.toLocaleString("en-NG")} + NIL`
+          : "NIL";
+      } else {
+        cartTotal.textContent =
+          "₦" + total.toLocaleString("en-NG");
+      }
+
+      checkoutBtn.disabled = false;
+
+    }
+
+
+    /*
+      =========================================
+      OPEN CART
+      =========================================
+    */
+
+    function openCart() {
+
+      document.getElementById("cartDrawer")
+        .classList.add("open");
+
+      document.getElementById("overlay")
+        .classList.add("open");
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    /*
+      =========================================
+      CLOSE CART
+      =========================================
+    */
+
+    function closeCart() {
+
+      document.getElementById("cartDrawer")
+        .classList.remove("open");
+
+      document.getElementById("overlay")
+        .classList.remove("open");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    /*
+      =========================================
+      WHATSAPP CHECKOUT
+      =========================================
+    */
+
+    function checkoutWhatsApp() {
+
+      if (cart.length === 0) {
+        return;
+      }
+
+
+      let message =
+        "Hello Nkoyo Abuja, I would like to place an order of:\n\n";
+
+
+      cart.forEach(item => {
+
+        const priceText = item.price === 0
+          ? "NIL"
+          : `₦${item.price.toLocaleString("en-NG")}`;
+
+        message +=
+          `• ${item.quantity} x ${item.name} — ${priceText}\n`;
+
+      });
+
+
+      const total = cart.reduce(
+        (sum, item) => sum + (item.price * item.quantity),
+        0
+      );
+
+
+      const hasNilItems = cart.some(item => item.price === 0);
+
+
+      message += "\n";
+
+
+      if (hasNilItems) {
+
+        message +=
+          `Current total for priced items: ₦${total.toLocaleString("en-NG")}\n`;
+
+        message +=
+          "Some selected menu prices are currently NIL and will be confirmed by Nkoyo.\n";
+
+      } else {
+
+        message +=
+          `Total: ₦${total.toLocaleString("en-NG")}\n`;
+
+      }
+
+
+      message +=
+        "\nPlease confirm my order. Thank you!";
+
+
+      const whatsappNumber = "2348188880126";
+
+      const url =
+        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+
+      window.open(url, "_blank");
+
+    }
+
+
+    /*
+      =========================================
+      TOAST MESSAGE
+      =========================================
+    */
+
+    let toastTimer;
+
+    function showToast(message) {
+
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+
+    }
+
+
+    /*
+      =========================================
+      YEAR
+      =========================================
+    */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /*
+      =========================================
+      INITIAL LOAD
+      =========================================
+    */
+
+    renderMenu();
+    renderDrinks();
+    updateCart();
+
+  </script>
+
 </body>
 </html>
